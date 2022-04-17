@@ -25,14 +25,14 @@ const FetchSearchMovies = () => {
 
   function onSubmit(event) {
     event.preventDefault();
-    // setMovies("");        
+    setMovies("");        
         
     fetchSearchMovies(queryValue.trim())
       .then((movies) => {
         setMovies(movies);
       }).catch((error) => alert(error))
     
-    navigate({ search: `query=${queryValue}` });
+    navigate({ ...location, search: `query=${queryValue}` });
   };
 
   function handleChange(event) {  
