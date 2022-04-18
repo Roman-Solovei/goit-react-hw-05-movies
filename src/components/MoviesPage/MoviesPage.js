@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 // import { NavLink, useParams } from 'react-router-dom';
 import { useLocation, useNavigate, NavLink } from 'react-router-dom';
+// import  {createBrowserHistory}  from 'history';
 import { fetchSearchMovies } from '../ApiService/ApiService';
 import s from './MoviePage.module.css';
 
@@ -11,6 +12,7 @@ const FetchSearchMovies = () => {
   const [queryValue, setQueryValue] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+  // const history = createBrowserHistory();
     
   useEffect(() => {
     // console.log(location.search)
@@ -25,14 +27,15 @@ const FetchSearchMovies = () => {
 
   function onSubmit(event) {
     event.preventDefault();
-    setMovies("");        
+    setMovies(""); 
+    setQueryValue("");
         
     fetchSearchMovies(queryValue.trim())
       .then((movies) => {
         setMovies(movies);
       }).catch((error) => alert(error))
     
-    navigate({ ...location, search: `query=${queryValue}` });
+     navigate({search: `&query=${queryValue}` });
   };
 
   function handleChange(event) {  
@@ -59,8 +62,7 @@ const FetchSearchMovies = () => {
           })}
       </ul>
     </div>
-  );
-   
+  );   
 };
 
 export default FetchSearchMovies;

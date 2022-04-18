@@ -1,5 +1,6 @@
 import { useEffect, useState, lazy, Suspense } from 'react';
-import { NavLink, useNavigate, useParams, Routes, Route } from 'react-router-dom';
+import { NavLink, useParams, Routes, Route } from 'react-router-dom';
+import { createBrowserHistory }  from 'history';
 import { fetchMovieDetails } from '../ApiService/ApiService';
 import img from '../Image/film-null.jpg';
 import s from './MovieDetailsPage.module.css';
@@ -9,13 +10,14 @@ const Reviews = lazy(() => import('../Reviews/Reviews'));
 
 const FetchMovieDetails = () => {
 
-    let navigate = useNavigate();
+    let history = createBrowserHistory();
     let { movieId } = useParams();
     const [movieDetails, setMovieDetails] = useState("");    
+    // console.log(movieId)
 
     useEffect(() => {
         fetchMovieDetails(movieId).then(movie => {
-            console.log(movie);
+            // console.log(movie);
             setMovieDetails(movie);
         }).catch(error => alert(error));
     }, [movieId]);
@@ -23,7 +25,7 @@ const FetchMovieDetails = () => {
     return (
         <div className={ s.detailsPage}>
 
-            <button type="button" onClick={() => { navigate(-1) }} >
+            <button type="button" onClick={() => { history.back() }} >
                 Go back
             </button>
 
