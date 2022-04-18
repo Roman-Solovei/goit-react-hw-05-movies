@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/896.f6e645dd.chunk.css","mappings":"AACA,yBACI,gBACJ,CAEA,uBAEI,iBACJ","sources":["components/MoviesPage/MoviePage.module.css"],"sourcesContent":["\n.search {\n    margin-left: 15px;\n}\n\n.list {\n    /* margin-left: 10px; */\n    list-style: inside;\n}"],"names":[],"sourceRoot":""}
