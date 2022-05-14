@@ -35,7 +35,7 @@ const FetchSearchMovies = () => {
         setMovies(movies);
       }).catch((error) => alert(error))
     
-     navigate({search: `&query=${queryValue}` });
+    navigate({search: `&query=${queryValue}` });
   };
 
   function handleChange(event) {  

@@ -25,11 +25,11 @@ const [trandingMovies, setTrandingMovies] = useState("");
                  
           return (
             <li key={movie.id}>
-              {/* <li> */}
+             
                 <NavLink to={`/movies/${movie.id}`}>
                   {movie.title}
                 </NavLink>
-              {/* </li> */}
+              
             </li>
           );
               })}
